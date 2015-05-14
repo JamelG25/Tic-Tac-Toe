@@ -1,29 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-
     <meta charset="UTF-8">
     <title>Tic Tac Toe</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
 
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+
+    <!-- Firebase -->
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/1.1.1/angularfire.min.js"></script>
+
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/TacController.js"></script>
 </head>
-<body>
 
-<div class="gameboard">
-    <table>
-        <tr class="firstrow">
-            <th class="row1"></th>
-            <th class="row1"></th>
-            <th class="row1"></th>
+<body ng-app="tacApp">
+<div class="board1" ng-controller="TacController as game">
+
+    <table class="board">
+        <tr id="row1">
+            <td class="box" >
+                {{2 + 2}}
+            </td>
+            <td class=" box m ">
+
+            </td>
+            <td class="box">
+
+            </td>
         </tr>
-        <tr class="secondrow">
-            <th class="row2"></th>
-            <th class="row2"></th>
-            <th class="row2"></th>
+        <tr id="row2">
+            <td class="box c">
+
+            </td>
+            <td class="box m c">
+
+            </td>
+            <td class="box c">
+
+            </td>
         </tr>
-        <tr class="thirdrow">
-            <th class="row3"></th>
-            <th class="row3"></th>
-            <th class="row3"></th>
+        <tr id="row3">
+            <td class="box">
+
+            </td>
+            <td class="box m">
+
+            </td>
+            <td class="box">
+
+            </td>
         </tr>
     </table>
+</div>
+
+
+</body>
+</html>
