@@ -1,35 +1,37 @@
 body{
-    display: table;
+    background: url("../images/future-world.jpg");
+    -webkit-background-size: cover;
+    background-size: cover;
 }
 
 h1{
     text-align: center;
+    color:white;
+
 }
 
-.gameboard {
+div{
+    display:block;
 
-    width: 20%;
-    display:table-cell;
-    vertical-align: middle ;
 }
 
-.row1 {
+.board{
+    height:350px;
+    width:350px;
+    position:relative;
+    margin: 0 auto;
 
-    border: 5px solid red;
-    background-color: #00FFFF;
-    padding: 50px;
 }
 
-.row2 {
-
-    border: 5px solid red;
-    background-color: #00FFFF;
-    padding: 50px;
-}
-
-.row3 {
-
-    border: 5px solid red;
-    background-color: #00FFFF;
-    padding: 50px;
+.square{
+    height: 100px;
+    width:100px;
+    background-color: crimson;
+    float:left;
+    margin: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border:1px solid blue;
+    background-size: contain;
 }
