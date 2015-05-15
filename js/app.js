@@ -1,2 +1,2 @@
 angular
-    .module ('tacApp',[])
+    .module ('tacApp',['firebase'])

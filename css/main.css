@@ -1,19 +1,35 @@
-html,*{
-    box-sizing: border-box;
-
+body{
+    display: table;
 }
 
-
-.board{
-    width: 450px;
-    height: 450px;
-    border:5px solid red;
+h1{
+    text-align: center;
 }
 
+.gameboard {
 
-#row1{
+    width: 20%;
+    display:table-cell;
+    vertical-align: middle ;
+}
 
-    border: 2px solid black;
-    float:left;
+.row1 {
 
+    border: 5px solid red;
+    background-color: #00FFFF;
+    padding: 50px;
+}
+
+.row2 {
+
+    border: 5px solid red;
+    background-color: #00FFFF;
+    padding: 50px;
+}
+
+.row3 {
+
+    border: 5px solid red;
+    background-color: #00FFFF;
+    padding: 50px;
 }

@@ -19,43 +19,28 @@
 </head>
 
 <body ng-app="tacApp">
-<div class="board1" ng-controller="TacController as game">
-
-    <table class="board">
-        <tr id="row1">
-            <td class="box" >
-                {{2 + 2}}
-            </td>
-            <td class=" box m ">
-
-            </td>
-            <td class="box">
-
-            </td>
-        </tr>
-        <tr id="row2">
-            <td class="box c">
-
-            </td>
-            <td class="box m c">
-
-            </td>
-            <td class="box c">
-
-            </td>
-        </tr>
-        <tr id="row3">
-            <td class="box">
-
-            </td>
-            <td class="box m">
-
-            </td>
-            <td class="box">
-
-            </td>
-        </tr>
-    </table>
+<div class="board1" ng-controller="TacController">
+    <h1>Tic Tac Toe</h1>
+{{2+2}}
+    <div class="gameboard">
+        <table align="center">
+            <tr class="firstrow">
+                <th class="row1"></th>
+                <th class="row1"></th>
+                <th class="row1"></th>
+            </tr>
+            <tr class="secondrow">
+                <th class="row2"></th>
+                <th class="row2"></th>
+                <th class="row2"></th>
+            </tr>
+            <tr class="thirdrow">
+                <th class="row3"></th>
+                <th class="row3"></th>
+                <th class="row3"></th>
+            </tr>
+        </table>
+    </div>
 </div>
 
 
