@@ -2,37 +2,48 @@ angular
     .module('tacApp')
     .controller('TacController', TacController);
 
-TacController.$inject = ['$scope', '$firebaseObject', '$firebaseArray'];
+TacController.$inject = ['$scope', '$firebaseObject'];
 
-function TacController($scope, $firebaseObject, $firebaseArray) {
+function TacController($scope, $firebaseObject) {
 
-    var ref = new Firebase("https://wakarana1-tic-tac-toe.firebaseio.com/");
+    var ref = new Firebase("https://tic-tac-toe-x.firebaseio.com/");
+    //var radRef = ref.child("vegas");
+    //radRef.set({
+    //    vegas: "rocks"
+    //});
 
-    $scope.board = $firebaseArray(ref.child("board"));
+    $firebaseObject(ref).$bindTo($scope,"game");
 
     $scope.player1 = -1;
     $scope.player2 = 1;
 
     var currentPlayer = -1;
 
+    $scope.noMove = true;
+
+
     $scope.playerMove = function (cellIndex) {
 
         $scope.score1 = 0;
         $scope.score2 = 0;
 
-        if ($scope.board[cellIndex].$value !== 0) {
+        if ($scope.game.board[cellIndex] !== 0) {
             return;
         }
 
-        $scope.board[cellIndex].$value = currentPlayer;
-
-        $scope.board.$save(cellIndex);
+        $scope.game.board[cellIndex] = currentPlayer;
 
         if (currentPlayer === -1) {
             currentPlayer = 1;
         }else{
             currentPlayer = -1;
         }
+    };
+
+    $scope.reset = function(){
+
+        $scope.game.board = [0,0,0,0,0,0,0,0,0];
+        $scope.noMove = true;
     };
 
     function checkWinner(sum) {
@@ -53,34 +64,40 @@ function TacController($scope, $firebaseObject, $firebaseArray) {
         var winner = 0;
 
         for(var row = 0; row < 3; row++){
-            sum = $scope.board[row * 3].$value + $scope.board[row * 3 + 1].$value + $scope.board[row * 3 + 2].$value;
+            sum = $scope.game.board[row * 3] + $scope.game.board[row * 3 + 1] + $scope.game.board[row * 3 + 2];
             winner = checkWinner(sum);
             if ( winner ) {
+                $scope.noMove = false;
                 return winner;
             }
         }
 
         for(var col = 0; col < 3; col++){
-            sum = $scope.board[col].$value + $scope.board[col + 3].$value + $scope.board[col + 6].$value;
+            sum = $scope.game.board[col] + $scope.game.board[col + 3] + $scope.game.board[col + 6];
             winner = checkWinner(sum);
             if ( winner ) {
+                $scope.noMove = false;
                 return winner;
             }
         }
 
-        sum = $scope.board[0].$value + $scope.board[4].$value + $scope.board[8].$value;
+        sum = $scope.game.board[0] + $scope.game.board[4] + $scope.game.board[8];
         winner = checkWinner(sum);
         if ( winner ) {
+            $scope.noMove = false;
             return winner; }
 
-        sum = $scope.board[6].$value + $scope.board[4].$value + $scope.board[2].$value;
+        sum = $scope.game.board[6] + $scope.game.board[4] + $scope.game.board[2];
         winner = checkWinner(sum);
         if ( winner ) {
+            $scope.noMove = false;
             return winner;
         }
 
         return 0;
+
     }
+
 
 }
 
@@ -94,78 +111,3 @@ function TacController($scope, $firebaseObject, $firebaseArray) {
 
 
 
-
-/*TacController.$inject = ['$scope','firebaseObject','firebaseArray'];
-
-function TacController() {
-
-    var ref = new Firebase("https://tic-tac-toe-x.firebaseio.com/");
-
-
-    $scope.board= $firebaseArray(ref.child("board"));
-
-    $scope.player1 = -1;
-    $scope.player1 = -1;
-
-    var currentPlayer= -1;
-
-    $scope.playerMove = function (cellIndex) {
-
-        $scope.score1 = 0;
-        $scope.score2 = 0;
-
-        if ($scope.board[cellIndex].$value !== 0) {
-            return;
-        }
-
-    var boxes = [-1,0,-1,1,-1,1,-1,0,1];
-
-    function getWinner () {
-
-        for(var row = 0; row < 3; row++){
-            var sum = boxes[row * 3] + boxes[row * 3 + 1] + boxes[row * 3 + 2];
-            var winner = checkWinner(sum);
-            if ( winner ) { return winner; }
-        }
-
-        for(var col = 0; col < 3; col++){
-            sum = boxes[col] + boxes[col + 3] + boxes[col + 6];
-            winner = checkWinner(sum);
-            if ( winner ) { return winner; }
-        }
-
-        sum = boxes[0] + boxes[4] + boxes[8];
-        winner = checkWinner(sum);
-        if ( winner ) { return winner; }
-
-        sum = boxes[6] + boxes[4] + boxes[2];
-        winner = checkWinner(sum);
-        if ( winner ) { return winner; }
-
-        return 0;
-
-    }
-
-    function checkWinner(sum) {
-        if ( sum === 3 || sum === -3 ) {
-            score1 += sum < 0 ? 0 :1;
-            score2 += sum < 0 ? 0 :1;
-            initBoard();
-            return sum < 0 ? -1 : 1;
-        } else {
-            return 0;
-        }
-    }
-
-    function initBoard() {
-        var board = [0,0,0,0,0,0,0,0,0];
-    }
-
-
-
-    console.log(getWinner());
-    getWinner();
-
-
-}//end of GameController
-   */

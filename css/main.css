@@ -26,12 +26,34 @@ div{
 .square{
     height: 100px;
     width:100px;
-    background-color: crimson;
     float:left;
     margin: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
-    border:1px solid blue;
+    border: 2px solid #FFFFFF ;
     background-size: contain;
+}
+
+.player1{
+    background: url("../images/colorX.jpeg");
+    -webkit-background-size: cover;
+    background-size: cover;
+
+}
+
+.player2{
+    background: url("../images/xcircle.jpeg");
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.reset {
+    background-color: #000000;
+    color: #FFFFFF;
+    float: right;
+    padding: 10px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
 }
