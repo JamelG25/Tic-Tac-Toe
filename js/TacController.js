@@ -14,24 +14,26 @@ function TacController($scope, $firebaseObject) {
     $scope.player1 = -1
     $scope.player2 = 1
 
-    var currentPlayer = -1;
+
+
 
 
     $scope.playerMove = function (cellIndex) {
+        console.log("playerMove just ran");
 
-        $scope.score1 = 0;
-        $scope.score2 = 0;
+        $scope.game.score1 = 0;
+        $scope.game.score2 = 0;
 
         if ($scope.game.board[cellIndex] !== 0) {
             return;
         }
 
-        $scope.game.board[cellIndex] = currentPlayer;
+        $scope.game.board[cellIndex] = $scope.game.currentPlayer;
 
-        if (currentPlayer === -1) {
-            currentPlayer = 1;
+        if ($scope.game.currentPlayer === -1) {
+            $scope.game.currentPlayer = 1;
         }else{
-            currentPlayer = -1;
+            $scope.game.currentPlayer = -1;
         }
     };
 
