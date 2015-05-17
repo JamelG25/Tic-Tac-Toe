@@ -35,45 +35,39 @@ function TacController($scope, $firebaseObject) {
         }else{
             $scope.game.currentPlayer = -1;
         }
+        getWinner();
     };
-
-    $scope.reset = function(){
-
-        $scope.game.board = [0,0,0,0,0,0,0,0,0];
-    };
-
-
 
     function getWinner() {
 
         var sum = 0;
-        var winner = 0;
+        $scope.game.winner = 0;
 
         for(var row = 0; row < 3; row++){
             sum = $scope.game.board[row * 3] + $scope.game.board[row * 3 + 1] + $scope.game.board[row * 3 + 2];
-            winner = checkWinner(sum);
-            if ( winner ) {
-                return winner;
+            $scope.game.winner = checkWinner(sum);
+            if ( $scope.game.winner ) {
+                return $scope.game.winner;s
             }
         }
 
         for(var col = 0; col < 3; col++){
             sum = $scope.game.board[col] + $scope.game.board[col + 3] + $scope.game.board[col + 6];
-            winner = checkWinner(sum);
-            if ( winner ) {
-                return winner;
+            $scope.game.winner = checkWinner(sum);
+            if ( $scope.game.winner ) {
+                return $scope.game.winner;
             }
         }
 
         sum = $scope.game.board[0] + $scope.game.board[4] + $scope.game.board[8];
-        winner = checkWinner(sum);
-        if ( winner ) {
-            return winner; }
+        $scope.game.winner = checkWinner(sum);
+        if ( $scope.game.winner ) {
+            return $scope.game.winner; }
 
         sum = $scope.game.board[6] + $scope.game.board[4] + $scope.game.board[2];
-        winner = checkWinner(sum);
-        if ( winner ) {
-            return winner;
+        $scope.game.winner = checkWinner(sum);
+        if ( $scope.game.winner ) {
+            return $scope.game.winner;
         }
         return 0;
     }
@@ -90,6 +84,11 @@ function TacController($scope, $firebaseObject) {
             return 0;
         }
     }
+
+    $scope.reset = function(){
+
+        $scope.game.board = [0,0,0,0,0,0,0,0,0];
+    };
 
 }
 
