@@ -22,28 +22,40 @@
 
 <h1>Tic Tac Toe</h1>
 
-<div class="left score"ng-bind="game.score1">Player 1 Score</div>
-<div class="right score"ng-bind="game.score2">Player 2 Score</div>
 
-<div class="board">
+    <div class="player">
+        <h1 ng-show="">{player1}</h1>
+        <h1 ng-show="">{player2}</h1>
+    </div>
+    <div class="player-info">
+        <span ng-bind="game.player1">Player 1</span>
+        <div>Score: {{game.score1}}</div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <span ng-bind="game.player2">Player 2</span>
+        <div>Score: {{game.score2}}</div>
+    </div>
+
+    <div class="board">
+
+        <div id="0" class="square top l" ng-click="playerMove(0)" ng-class="{player1: game.board[0] == player1, player2: game.board[0] == player2}"></div>
+        <div id="1" class="square top m" ng-click="playerMove(1)" ng-class="{player1: game.board[1] == player1, player2: game.board[1] == player2}"></div>
+        <div id="2" class="square top r" ng-click="playerMove(2)" ng-class="{player1: game.board[2] == player1, player2: game.board[2] == player2}"></div>
+        <br>
+        <div id="3" class="square middle l" ng-click="playerMove(3)" ng-class="{player1: game.board[3] == player1, player2: game.board[3] == player2}"></div>
+        <div id="4" class="square middle" ng-click="playerMove(4)" ng-class="{player1: game.board[4] == player1, player2: game.board[4] == player2}"></div>
+        <div id="5" class="square middle r" ng-click="playerMove(5)" ng-class="{player1: game.board[5] == player1, player2: game.board[5] == player2}"></div>
+        <br>
+        <div id="6" class="square bottom l" ng-click="playerMove(6)" ng-class="{player1: game.board[6] == player1, player2: game.board[6] == player2}"></div>
+        <div id="7" class="square bottom m" ng-click="playerMove(7)" ng-class="{player1: game.board[7] == player1, player2: game.board[7] == player2}"></div>
+        <div id="8" class="square bottom r" ng-click="playerMove(8)" ng-class="{player1: game.board[8] == player1, player2: game.board[8] == player2}"></div>
 
 
+        <button class="reset" ng-click="reset()">Reset </button>
+    </div>
 
-    <div id="0" class="square top l" ng-click="playerMove(0)" ng-class="{player1: game.board[0] == -1, player2: game.board[0] == 1}"></div>
-    <div id="1" class="square top m" ng-click="playerMove(1)" ng-class="{player1: game.board[1] == -1, player2: game.board[1] == 1}"></div>
-    <div id="2" class="square top r" ng-click="playerMove(2)" ng-class="{player1: game.board[2] == -1, player2: game.board[2] == 1}"></div>
-
-    <div id="3" class="square middle l" ng-click="playerMove(3)" ng-class="{player1: game.board[3] == -1, player2: game.board[3] == 1}"></div>
-    <div id="4" class="square middle" ng-click="playerMove(4)" ng-class="{player1: game.board[4] == -1, player2: game.board[4] == 1}"></div>
-    <div id="5" class="square middle r" ng-click="playerMove(5)" ng-class="{player1: game.board[5] == -1, player2: game.board[5] == 1}"></div>
-
-    <div id="6" class="square bottom l" ng-click="playerMove(6)" ng-class="{player1: game.board[6] == -1, player2: game.board[6] == 1}"></div>
-    <div id="7" class="square bottom m" ng-click="playerMove(7)" ng-class="{player1: game.board[7] == -1, player2: game.board[7] == 1}"></div>
-    <div id="8" class="square bottom r" ng-click="playerMove(8)" ng-class="{player1: game.board[8] == -1, player2: game.board[8] == 1}"></div>
-
-
-    <button class="reset" ng-click="reset()">Reset </button>
-</div>
 
 
 

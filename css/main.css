@@ -15,6 +15,10 @@ div{
 
 }
 
+.left{
+    color: white;
+}
+
 .board{
     height:350px;
     width:350px;
@@ -24,16 +28,20 @@ div{
 }
 
 .square{
+
+    display: inline-block;
     height: 100px;
-    width:100px;
-    float:left;
-    margin: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    border: 2px solid #FFFFFF ;
-    background-size: contain;
+    width: 100px;
+    background: url('../images/congruent_outline.png');
+    border: 2px solid black;
+    border-radius: 4px;
+    box-shadow: 3px 3px 1px #888888;
+    margin: 5px 5px 5px 5px;
+    vertical-align: middle;
+    opacity: .9;
 }
+
+
 
 .player1{
     background: url("../images/colorX.jpeg");
