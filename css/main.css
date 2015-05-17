@@ -41,7 +41,9 @@ div{
     opacity: .9;
 }
 
-
+.player-info{
+    color:white;
+}
 
 .player1{
     background: url("../images/colorX.jpeg");

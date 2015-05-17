@@ -9,85 +9,111 @@ function TacController($scope, $firebaseObject) {
     var ref = new Firebase("https://tic-tac-toe-x.firebaseio.com/");
 
 
-    $firebaseObject(ref).$bindTo($scope,"game");
+    $firebaseObject(ref).$bindTo($scope, "game");
 
-    $scope.player1 = -1
-    $scope.player2 = 1
+    //$scope.player1 = -1
+    //$scope.player2 = 1
 
-
-
-
+    var player = null;
 
     $scope.playerMove = function (cellIndex) {
         console.log("playerMove just ran");
 
-        $scope.game.score1 = 0;
-        $scope.game.score2 = 0;
-
         if ($scope.game.board[cellIndex] !== 0) {
+
             return;
         }
 
-        $scope.game.board[cellIndex] = $scope.game.currentPlayer;
 
+            $scope.game.board[cellIndex] = $scope.game.currentPlayer;
+        $scope.game.board[cellIndex] = $scope.game.currentPlayer;
         if ($scope.game.currentPlayer === -1) {
             $scope.game.currentPlayer = 1;
-        }else{
+        } else {
             $scope.game.currentPlayer = -1;
         }
         getWinner();
     };
+
 
     function getWinner() {
 
         var sum = 0;
         $scope.game.winner = 0;
 
-        for(var row = 0; row < 3; row++){
+        for (var row = 0; row < 3; row++) {
             sum = $scope.game.board[row * 3] + $scope.game.board[row * 3 + 1] + $scope.game.board[row * 3 + 2];
             $scope.game.winner = checkWinner(sum);
-            if ( $scope.game.winner ) {
-                return $scope.game.winner;s
+            if ($scope.game.winner) {
+                vegasWinner();
+                return $scope.game.winner;
             }
         }
 
-        for(var col = 0; col < 3; col++){
+        for (var col = 0; col < 3; col++) {
             sum = $scope.game.board[col] + $scope.game.board[col + 3] + $scope.game.board[col + 6];
             $scope.game.winner = checkWinner(sum);
-            if ( $scope.game.winner ) {
+            if ($scope.game.winner) {
+                vegasWinner();
                 return $scope.game.winner;
             }
         }
 
         sum = $scope.game.board[0] + $scope.game.board[4] + $scope.game.board[8];
         $scope.game.winner = checkWinner(sum);
-        if ( $scope.game.winner ) {
-            return $scope.game.winner; }
+        if ($scope.game.winner) {
+            vegasWinner();
+            return $scope.game.winner;
+        }
 
         sum = $scope.game.board[6] + $scope.game.board[4] + $scope.game.board[2];
         $scope.game.winner = checkWinner(sum);
-        if ( $scope.game.winner ) {
+        if ($scope.game.winner) {
+            vegasWinner();
             return $scope.game.winner;
         }
+        $scope.game.moveCount++;
+        if ($scope.game.moveCount === 9){
+            $scope.game.winnerDisplay = "Draw";
+
+        }
         return 0;
+
     }
 
 
     function checkWinner(sum) {
-        if ( sum === -3) {
-            $scope.score1++;
+        if (sum === -3) {
+            $scope.game.score1++;
             return -1;
-        }else if (sum === 3) {
-            $scope.score2++;
+        } else if (sum === 3) {
+            $scope.game.score2++;
             return 1;
-        }else {
+        } else {
             return 0;
+        }
+    }
+
+
+
+
+    function vegasWinner () {
+
+        if ($scope.game.winner === $scope.game.player1) {
+            $scope.game.winnerDisplay = "O";
+            return $scope.game.winnerDisplay;
+        }
+        else if ($scope.game.winner === $scope.game.player2) {
+            $scope.game.winnerDisplay = "X";
+            return $scope.game.winnerDisplay;
         }
     }
 
     $scope.reset = function(){
 
         $scope.game.board = [0,0,0,0,0,0,0,0,0];
+        $scope.game.winnerDisplay = "";
+        $scope.game.moveCount = 0;
     };
 
 }
