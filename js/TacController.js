@@ -15,6 +15,10 @@ function TacController($scope, $firebaseObject) {
     //
     $scope.playerMove = function (cellIndex) {
 
+        //Bitch it's Game over!! Why are you making more moves
+        if ($scope.game.gameOver === true) {
+            return;
+        }
         //if any cellindex is taken - cant make or replace that index.
         if ($scope.game.board[cellIndex] !== 0) {
             return;//prevent anything else happening in playermove
@@ -90,10 +94,12 @@ function TacController($scope, $firebaseObject) {
         //if the sum = player 1 win. add win and return = spits out -1
         if (sum === -3) {
             $scope.game.score1++;
+            $scope.game.gameOver =true;
             return -1;
             //if the sum = player 2 win. add win and return = spits out 1
         } else if (sum === 3) {
             $scope.game.score2++;
+            $scope.game.gameOver =true;
             return 1;
         } else {
             //dont have a winner so telling any other function and no one won
@@ -122,6 +128,7 @@ function TacController($scope, $firebaseObject) {
         $scope.game.board = [0,0,0,0,0,0,0,0,0];
         $scope.game.winnerDisplay = "";
         $scope.game.moveCount = 0;
+        $scope.game.gameOver=false;
     };
 
 }

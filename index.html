@@ -20,21 +20,27 @@
 
 <body ng-app="tacApp" ng-controller="TacController">
 
-<h1>Tic Tac Toe</h1>
 
-<div class="player">
-    <h1>Aaaaaaand, the winnnnnnner isssss: {{game.winnerDisplay}}</h1>
-</div>
 
-<div class="player-info">
-    <h3>This is player one's score:</h3>
-    <p>Score: {{game.score1}}</p>
-    <h3>This is player two's score:</h3>
-    <p>Score: {{game.score2}}</p>
-</div>
+    <div class="player-info">
+        <div class="play1">
+            <h3>Player 1 Score:</h3>
+            <p>Score: {{game.score1}}</p>
+        </div>
+
+        <div class="play2">
+            <h3>Player 2 Score:</h3>
+            <p>Score: {{game.score2}}</p>
+        </div>
+    </div>
 
 
     <div class="board">
+        <h1>Tic Tac Toe</h1>
+
+        <div class="player">
+            <h1>The Winner:<br>{{game.winnerDisplay}}</h1>
+        </div>
 
         <div id="0" class="square top l" ng-click="playerMove(0)" ng-class="{player1: game.board[0] == game.player1, player2: game.board[0] == game.player2}"></div>
         <div id="1" class="square top m" ng-click="playerMove(1)" ng-class="{player1: game.board[1] == game.player1, player2: game.board[1] == game.player2}"></div>

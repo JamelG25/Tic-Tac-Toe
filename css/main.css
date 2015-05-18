@@ -1,5 +1,5 @@
 body{
-    background: url("../images/future-world.jpg");
+    background: url("../images/futureworld.jpg");
     -webkit-background-size: cover;
     background-size: cover;
 }
@@ -24,7 +24,16 @@ div{
     width:350px;
     position:relative;
     margin: 0 auto;
+}
 
+.play1{
+    float:left;
+    margin: 10% 0 0 20%;
+}
+
+.play2{
+    float:right;
+    margin: 10% 20% 0 0;
 }
 
 .square{
