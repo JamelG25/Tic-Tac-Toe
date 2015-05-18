@@ -81,7 +81,7 @@ function TacController($scope, $firebaseObject) {
         //everytime a person makes a move add 1.
         $scope.game.moveCount++;
         //if movecount = 9 then we get a draw because no more move to be made
-        if ($scope.game.moveCount === 9){
+        if ($scope.game.moveCount === 9) {
             $scope.game.winnerDisplay = "Draw";
 
         }
@@ -94,12 +94,12 @@ function TacController($scope, $firebaseObject) {
         //if the sum = player 1 win. add win and return = spits out -1
         if (sum === -3) {
             $scope.game.score1++;
-            $scope.game.gameOver =true;
+            $scope.game.gameOver = true;
             return -1;
             //if the sum = player 2 win. add win and return = spits out 1
         } else if (sum === 3) {
             $scope.game.score2++;
-            $scope.game.gameOver =true;
+            $scope.game.gameOver = true;
             return 1;
         } else {
             //dont have a winner so telling any other function and no one won
@@ -109,27 +109,39 @@ function TacController($scope, $firebaseObject) {
 
 
     //spits out the actual winner
-    function vegasWinner () {
+    function vegasWinner() {
         //winner is = player 1 the n we print out "o" and return just in case we need to use it.
         if ($scope.game.winner === $scope.game.player1) {
-            $scope.game.winnerDisplay = "O";
+            $scope.game.winnerDisplay = "O O O ";
             return $scope.game.winnerDisplay;
         }
         //winner is = player 2 the n we print out "x" and return just in case we need to use it.
         else if ($scope.game.winner === $scope.game.player2) {
-            $scope.game.winnerDisplay = "X";
+            $scope.game.winnerDisplay = "X X X ";
             return $scope.game.winnerDisplay;
         }
     }
 
     //reset the board, winner, moveCount.
-    $scope.reset = function(){
+    $scope.reset = function () {
 
-        $scope.game.board = [0,0,0,0,0,0,0,0,0];
+        $scope.game.board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
         $scope.game.winnerDisplay = "";
         $scope.game.moveCount = 0;
-        $scope.game.gameOver=false;
+        $scope.game.gameOver = false;
     };
+
+    //made a new one that will clear out the actual score of the game.
+    $scope.clearGame = function() {
+
+        $scope.game.board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $scope.game.winnerDisplay = "";
+        $scope.game.moveCount = 0;
+        $scope.game.gameOver = false;
+        $scope.game.score1 = 0;
+        $scope.game.score2 = 0;
+    }
+
 
 }
 

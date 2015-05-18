@@ -50,7 +50,23 @@ div{
     opacity: .9;
 }
 
-.player-info{
+#score{
+    color:orange;
+    opacity: .8;
+}
+
+#score2{
+    color:orange;
+    opacity: .8;
+}
+
+.lead{
+    color: #00FFFF;
+    opacity: .9;
+    font-size: 20px;
+}
+
+#player-info{
     color:white;
 }
 
@@ -75,4 +91,56 @@ div{
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
+}
+
+.clear{
+    background-color: #000000;
+    color: #FFFFFF;
+    float: left;
+    padding: 10px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+
+.winner {
+    color:red;
+    opacity: .9;
+    border-radius:100%;
+    position: relative;
+    -webkit-animation-name: winner;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-delay: 1s;
+    -webkit-animation-iteration-count: 1;
+    animation-name: winner;
+    animation-delay: 3s;
+    animation-iteration-count: 1;
+}
+
+@keyframes winner{
+    0%{background-color: red; left: 0px; top: 0px;}
+    10%{background-color: yellow; left: 200px; top: 0px;}
+    20%{background-color: purple; left: 200px; top: 200px}
+    30%{background-color: blue; left: 0px; top: 200px;}
+    40%{background-color: black; left: 0px; top: 0px;}
+    50%{background-color: purple; left: 100px; top: 100px;}
+    60%{background-color: red; left: 0px; top: 200px;}
+    70%{background-color: yellow; left: 40px; top: 50px;}
+    80%{background-color: purple; left: 10px; top: 10px;}
+    90%{background-color: blue; left: 50px; top: 0px;}
+    100%{background-color: black; left: 40px; top: 20px;}
+}
+
+@-webkit-keyframes winner{
+    0%{background-color: red; left: 0px; top: 0px;}
+    10%{background-color: yellow; left: 200px; top: 0px;}
+    20%{background-color: purple; left: 200px; top: 200px}
+    30%{background-color: blue; left: 0px; top: 200px;}
+    40%{background-color: black; left: 0px; top: 0px;}
+    50%{background-color: purple; left: 100px; top: 100px;}
+    60%{background-color: red; left: 0px; top: 200px;}
+    70%{background-color: yellow; left: 40px; top: 50px;}
+    80%{background-color: purple; left: 10px; top: 10px;}
+    90%{background-color: blue; left: 50px; top: 0px;}
+    100%{background-color: black; left: 40px; top: 20px;}
 }
