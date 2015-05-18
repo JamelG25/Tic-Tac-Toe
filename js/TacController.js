@@ -15,7 +15,7 @@ function TacController($scope, $firebaseObject) {
     //
     $scope.playerMove = function (cellIndex) {
 
-        //Bitch it's Game over!! Why are you making more moves
+        //gameOver no more move!! Why are you making more moves
         if ($scope.game.gameOver === true) {
             return;
         }
